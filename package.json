@@ -2,7 +2,7 @@
   "name": "wa-react-2021-q4-capstone-project",
   "version": "0.1.0",
   "homepage":"https://mjayalam.github.io/wa-react-2021-q4-internal-capstone-project",
-  "private": true,
+  "private": false,
   "dependencies": {
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^11.1.0",
