@@ -1,11 +1,8 @@
 import React,{ useState, useEffect } from 'react';
+import { devices } from '../../utils/devices';
+import ImageContainer from './Image';
 import styled from 'styled-components';
 
-
-const ImageSlider = styled.img.attrs(props => ({src: props.src}))`
-    width: 100%;
-		min-height: 500px;
-`;
 const Arrow = styled.i`
 	border: solid black;
 	border-width: 0 3px 3px 0;
@@ -28,10 +25,25 @@ const Wrapper = styled.div`
 	display: flex;
 	justify-content: center;
 	align-items: center;
+	min-height: 360px;
 
- ${ImageSlider} {
-	 width: 50%;
- }
+ 	${ImageContainer} {
+		 @media ${devices.mobileS} {
+			width: 100%;
+		 }
+		 @media ${devices.table} {
+			width: 90%;
+		 }
+		 @media ${devices.laptop} {
+			width: 60%;
+		 }
+		 @media ${devices.laptopL} {
+			width: 60%;
+		 }
+		 @media ${devices.desktop} {
+			width: 50%;
+		 }
+ 	}
 `;
 
 const Slider = ({
@@ -44,7 +56,7 @@ const Slider = ({
 		<Wrapper>
 			<RightArrow onClick={() => setCounter(((counter - 1) + items.length) % items.length)}/>
 			{items.map((item,index) => (
-			counter === index && <ImageSlider src={item.data.main_image.url} />
+			counter === index && <ImageContainer key={index} maxWidth={'700px'} src={item.data.main_image.url} />
 			))}
 			<LeftArrow onClick={() => setCounter((counter + 1)% items.length)} />
 		</Wrapper>
