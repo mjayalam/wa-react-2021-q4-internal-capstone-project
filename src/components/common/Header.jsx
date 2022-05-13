@@ -1,38 +1,46 @@
-import React from "react";
+import React, { useState } from "react";
+import { useHistory } from "react-router-dom";
 import styled from "styled-components";
-import { FaShoppingCart } from "react-icons/fa";
+import { FaShoppingCart, FaSearch } from "react-icons/fa";
 import Card from "../../components/common/Card.js";
+import StyledFlex from "./StyledFlex.js";
 const HeaderWrapper = styled.div`
 	width: 100%;
 `;
-const LogoWrapper = styled.div`
-	display: flex;
-	align-items: center;
-	justify-content: space-around;
-	padding: 0px;
-`;
+
+const SearchWrapper = styled.div`
+	display: inline-block;
+	padding-top: 10px;
+`; 
+
 const CartWrapper = styled.div`
-	display: flex;
-	flex-direction: end;
-	align-items: center;
-	justify-content: space-between;
+	padding-top: 10px;
 `;
-const Header = ({setAtHomePage}) => {
+const Header = () => {
+	const [searchTerm, setSearchTerm] = useState('');
+	let history = useHistory();
+	const handleClick = () => {
+		history.push(`/search?q=${searchTerm}`)
+	}
 	return (
 		<HeaderWrapper>
 			<Card>
-				<LogoWrapper onClick={() => setAtHomePage(true)}>
+				<StyledFlex direction={"row"} justifyContent={"space-around"}>
 					<img
 						src={`${process.env.PUBLIC_URL}/logo-oficial.png`} 
 						alt="logo"
 						width="100"
 						height="100"
+						onClick={() => history.push('/wa-react-2021-q4-internal-capstone-project')}
 					/>
+					<SearchWrapper>
+						<input type="text" value={searchTerm}  placeholder='Type here' onChange={e => setSearchTerm(e.target.value)}/>
+						<button disabled={searchTerm.length === 0} onClick={handleClick}><FaSearch/></button>
+					</SearchWrapper>
 					<CartWrapper>
-						<input type="text" disabled placeholder='Type here'/>
 						<FaShoppingCart/>
 					</CartWrapper>
-				</LogoWrapper>
+				</StyledFlex>
 			</Card>
 		</HeaderWrapper>
 	)
