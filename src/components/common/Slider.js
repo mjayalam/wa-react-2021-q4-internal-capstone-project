@@ -1,4 +1,4 @@
-import React,{ useState, useEffect } from 'react';
+import React,{ useState } from 'react';
 import { devices } from '../../utils/devices';
 import ImageContainer from './Image';
 import styled from 'styled-components';
@@ -46,19 +46,26 @@ const Wrapper = styled.div`
  	}
 `;
 
-const Slider = ({
-	onLeftClicked,
-	onRightClicked,
-	items = [],
-}) => {
+const Slider = ({images, isLoading}) => {
 	const [counter, setCounter] = useState(0);
+
+	if(isLoading) {
+		return (
+		<Wrapper>
+			<p>Loading...</p>
+		</Wrapper>
+		)
+	}
+	if(images.results && images.results.length === 0) {
+		return <p>Empty list</p>
+	}
 	return (
 		<Wrapper>
-			<RightArrow onClick={() => setCounter(((counter - 1) + items.length) % items.length)}/>
-			{items.map((item,index) => (
+			<RightArrow onClick={() => setCounter(((counter - 1) + images.results.length) % images.results.length)}/>
+			{images.results && images.results.map((item,index) => (
 			counter === index && <ImageContainer key={index} maxWidth={'700px'} src={item.data.main_image.url} />
 			))}
-			<LeftArrow onClick={() => setCounter((counter + 1)% items.length)} />
+			<LeftArrow onClick={() => setCounter((counter + 1)% images.results.length)} />
 		</Wrapper>
 	)
 }

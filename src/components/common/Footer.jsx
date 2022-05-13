@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import Card from './Card';
 const Wrapper = styled.div`
-  display: flex;
+  	display: flex;
 	justify-content: center;
 	align-items: center;
 `;

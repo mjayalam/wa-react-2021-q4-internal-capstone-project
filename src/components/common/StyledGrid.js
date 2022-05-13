@@ -1,7 +1,7 @@
 import styled  from 'styled-components';
 import { devices } from '../../utils/devices';
 
-const Grid = styled.div`
+const StyledGrid = styled.div`
 	display: grid;
 	grid-template-rows: auto;
 	@media ${devices.mobileS} {
@@ -16,4 +16,4 @@ const Grid = styled.div`
 
 `;
 
-export default Grid;
+export default StyledGrid;

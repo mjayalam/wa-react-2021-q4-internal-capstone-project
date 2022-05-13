@@ -8,9 +8,9 @@ const CardWrapper  = styled.div`
 	width: ${props => props.width};
 `;
 
-const Card = ({ children }) => {
+const Card = ({ onClick, children }) => {
 	return (
-		<CardWrapper>
+		<CardWrapper onClick={onClick}>
 			{children}
 		</CardWrapper>
 	)
