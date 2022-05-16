@@ -31,29 +31,29 @@ const Header = () => {
 	}
 
 	return (
-		<HeaderWrapper>
-			<Card>
-				<StyledFlex direction={"row"} justifyContent={"space-around"}>
-					<img
-						src={`${process.env.PUBLIC_URL}/logo-oficial.png`}
-						alt="logo"
-						width="100"
-						height="100"
-						onClick={() => history.push('/wa-react-2021-q4-internal-capstone-project')}
-					/>
-					<SearchWrapper>
-						<input type="text" value={searchTerm}  placeholder='Type here' onChange={e => setSearchTerm(e.target.value)}/>
-						<button disabled={searchTerm.length === 0} onClick={handleClick}><FaSearch/></button>
-					</SearchWrapper>
-					<CartWrapper onClick={() => history.push('/cart')}>
-						<StyledFlex direction={"column"}>
-							{state.itemCount}
-							<FaShoppingCart />
-						</StyledFlex>
-					</CartWrapper>
-				</StyledFlex>
-			</Card>
-		</HeaderWrapper>
+    <HeaderWrapper>
+      <Card>
+        <StyledFlex direction={"row"} justifyContent={"space-around"}>
+          <img
+            src={`${process.env.PUBLIC_URL}/logo-oficial.png`}
+            alt="logo"
+            width="100"
+            height="100"
+            onClick={() => history.push('/wa-react-2021-q4-internal-capstone-project')}
+          />
+          <SearchWrapper>
+            <input type="text" value={searchTerm}  placeholder='Type here' onChange={e => setSearchTerm(e.target.value)}/>
+            <button disabled={searchTerm.length === 0} onClick={handleClick}><FaSearch/></button>
+          </SearchWrapper>
+          <CartWrapper onClick={() => history.push('/cart')}>
+            <StyledFlex direction={"column"}>
+              {state.itemCount}
+              <FaShoppingCart />
+            </StyledFlex>
+          </CartWrapper>
+        </StyledFlex>
+      </Card>
+    </HeaderWrapper>
 	)
 }
 
