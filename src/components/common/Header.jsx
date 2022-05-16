@@ -1,9 +1,10 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { useHistory } from "react-router-dom";
 import styled from "styled-components";
 import { FaShoppingCart, FaSearch } from "react-icons/fa";
 import Card from "../../components/common/Card.js";
 import StyledFlex from "./StyledFlex.js";
+import ShoppingCartContext from "../../utils/state/ShoppingCartContext.jsx";
 const HeaderWrapper = styled.div`
 	width: 100%;
 `;
@@ -15,8 +16,13 @@ const SearchWrapper = styled.div`
 
 const CartWrapper = styled.div`
 	padding-top: 10px;
+	&:hover {
+		cursor: pointer;
+	}
 `;
 const Header = () => {
+	const { state } = useContext(ShoppingCartContext);
+
 	const [searchTerm, setSearchTerm] = useState('');
 	let history = useHistory();
 	const handleClick = () => {
@@ -37,8 +43,12 @@ const Header = () => {
 						<input type="text" value={searchTerm}  placeholder='Type here' onChange={e => setSearchTerm(e.target.value)}/>
 						<button disabled={searchTerm.length === 0} onClick={handleClick}><FaSearch/></button>
 					</SearchWrapper>
-					<CartWrapper>
-						<FaShoppingCart/>
+					<CartWrapper onClick={() => history.push('/cart')}>
+						<StyledFlex direction={"column"}>
+							{state.itemCount}
+							<FaShoppingCart />
+						</StyledFlex>
+						
 					</CartWrapper>
 				</StyledFlex>
 			</Card>

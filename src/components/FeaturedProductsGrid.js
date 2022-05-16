@@ -19,12 +19,12 @@ const FeaturedProductGrid = () => {
 				{data.results && data.results.map((item) => (
           <Card width={"15"} key={item.id}>
             <Flex direction={"column"} alignItems={"center"}>
-              <ImageContainer width={25} src={item.data.mainimage.url} alt={item.data.alt}/>
+              <ImageContainer width={25} src={item.data.mainimage.url} alt={item.data.alt} />
               <div>
-                <Flex direction={"row"} justifyContent={"space-around"}>
-                  <p>Product name: {item.data.name}</p>
-                  <p>Price: ${item.data.price}</p>
-                  <p>Category:{item.data.category.slug}</p>
+                <Flex direction={"column"} justifyContent={"space-around"}>
+                  <p>Product name: {item.data.name} </p>
+                  <p>Price: ${item.data.price} </p>
+                  <p>Category:{item.data.category.slug} </p>
                 </Flex>
               </div>
            
