@@ -5,6 +5,7 @@ import { FaShoppingCart, FaSearch } from "react-icons/fa";
 import Card from "../../components/common/Card.js";
 import StyledFlex from "./StyledFlex.js";
 import ShoppingCartContext from "../../utils/state/ShoppingCartContext.jsx";
+
 const HeaderWrapper = styled.div`
 	width: 100%;
 `;
@@ -34,7 +35,7 @@ const Header = () => {
 			<Card>
 				<StyledFlex direction={"row"} justifyContent={"space-around"}>
 					<img
-						src={`${process.env.PUBLIC_URL}/logo-oficial.png`} 
+						src={`${process.env.PUBLIC_URL}/logo-oficial.png`}
 						alt="logo"
 						width="100"
 						height="100"

@@ -32,19 +32,19 @@ const CartPage = () => {
 						<img alt={item.data.name} src={item.data.mainimage.url} width={'120px'} height={'120px'} />
 						<p>Unit Price: ${item.data.price}</p>
 						<ItemCounter
-								value={item.count}
-								disabled={item.count > item.data.stock}
-								onChange={(e) => handleOnChange(e,item)}
-								showButton={false}
+              value={item.count}
+              disabled={item.count > item.data.stock}
+              onChange={(e) => handleOnChange(e,item)}
+              showButton={false}
 						/>
 						<StyledIconWrapper onClick={() => dispatch({
-								type: "REMOVE_ITEM",
-								payload: item,
+              type: "REMOVE_ITEM",
+              payload: item,
 						})}>
-								<FaTrash />
+						<FaTrash />
 						</StyledIconWrapper>
-						<p>Subtotal: ${item.data.price * item.count}</p>
-					</StyledFlex>
+              <p>Subtotal: ${item.data.price * item.count}</p>
+            </StyledFlex>
 				</Card>
 			))}
 			<StyledFlex justifyContent={'space-between'}>
