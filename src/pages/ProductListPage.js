@@ -13,7 +13,6 @@ import { useContext } from 'react';
 import ShoppingCartContext from '../utils/state/ShoppingCartContext';
 
 
-
 const ProductListPage = () => {
 	let query = useQuery();
 	let history = useHistory();
@@ -128,7 +127,6 @@ const ProductListPage = () => {
 						)
 					))}
 				</StyledGrid>	
-
 			</StyledFlex>
 			{products.results && <Pagination
 				disabledPrev={products.prev_page == null}

@@ -9,7 +9,7 @@ import Pagination from "../components/common/Pagination";
 import ItemCounter from "../components/common/ItemCounter";
 import ShoppingCartContext from "../utils/state/ShoppingCartContext";
 
-const SearchPage = () =>{
+const SearchPage = () => {
     let query = useQuery();
     const { state, dispatch } = useContext(ShoppingCartContext)
     const [itemCount, setItemCount] = useState([]);
@@ -89,45 +89,42 @@ const SearchPage = () =>{
 		return  product.data.stock - (element === undefined ? 0 : element.count) - numberBefore
 	}
     if(isLoading) {
-        return <h3>Loading search results..</h3>
+      return <h3>Loading search results..</h3>
     }
     if(products.results && products.results.length === 0) {
-        return <h3>There are no matches for {query.get('q') ? query.get('q') : 'your search'}</h3>
+      return <h3>There are no matches for {query.get('q') ? query.get('q') : 'your search'}</h3>
     }
-    return (
-        <>
-            <h1>Results for:  {query.get('q')}</h1>
-            <StyledGrid>
-                {products.results && products.results.map((product,index) => 
-									((
-										<Card key={`${product.data.name}-${index * 100}`}>
-											<ItemCounter
-												value={itemCount[index]}
-												disabled={(checkAvailability(product,itemCount[index])) <= 0}
-												add={() => handleAddItem(index)}
-												onChange={(e) => handleOnChange(e,index)}
-											/>
-											<ImageContainer width={40} src={product.data.mainimage.url}/>
-											<StyledFlex direction={'row'} justifyContent={'space-between'} alignItems={"flex-start"}>
-												<p>{product.data.name}</p>
-												<p>{product.data.price}</p>
-												<p>{product.data.category.slug}</p>
-											</StyledFlex>
-											<h3>Description</h3>
-											<p>{product.data.short_description}</p>
-										</Card>
-									)
-                ))}
-            </StyledGrid>
-            <Pagination 
-                disabledPrev={products.prev_page == null}
-                disabledNext={products.next_page == null}
-                nextRequest={nextPageRequest}
-                previousRequest={previousPageRequest}
-            />
-            
-        </>
-    )
+	return (
+		<>
+			<h1>Results for:  {query.get('q')}</h1>
+			<StyledGrid>
+				{products.results && products.results.map((product,index) => ((
+					<Card key={`${product.data.name}-${index * 100}`}>
+						<ItemCounter
+							value={itemCount[index]}
+							disabled={(checkAvailability(product,itemCount[index])) <= 0}
+							add={() => handleAddItem(index)}
+							onChange={(e) => handleOnChange(e,index)}
+						/>
+						<ImageContainer width={40} src={product.data.mainimage.url}/>
+						<StyledFlex direction={'row'} justifyContent={'space-between'} alignItems={"flex-start"}>
+							<p>{product.data.name}</p>
+							<p>{product.data.price}</p>
+							<p>{product.data.category.slug}</p>
+						</StyledFlex>
+						<h3>Description</h3>
+						<p>{product.data.short_description}</p>
+					</Card>
+				)))}
+			</StyledGrid>
+			<Pagination
+				disabledPrev={products.prev_page == null}
+				disabledNext={products.next_page == null}
+				nextRequest={nextPageRequest}
+				previousRequest={previousPageRequest}
+			/>
+		</>
+	)
 }
 
 export default SearchPage;

@@ -22,12 +22,13 @@ const CartWrapper = styled.div`
 `;
 const Header = () => {
 	const { state } = useContext(ShoppingCartContext);
-
 	const [searchTerm, setSearchTerm] = useState('');
 	let history = useHistory();
+
 	const handleClick = () => {
 		history.push(`/search?q=${searchTerm}`)
 	}
+
 	return (
 		<HeaderWrapper>
 			<Card>
@@ -48,7 +49,6 @@ const Header = () => {
 							{state.itemCount}
 							<FaShoppingCart />
 						</StyledFlex>
-						
 					</CartWrapper>
 				</StyledFlex>
 			</Card>
