@@ -1,13 +1,12 @@
 import { useContext } from 'react';
 import { useHistory } from 'react-router-dom';
-import Card from '../components/common/Card';
+import Card from '../../components/common/Card';
 import { FaTrash } from "react-icons/fa";
-import StyledFlex from '../components/common/StyledFlex';
-import ShoppingCartContext from '../utils/state/ShoppingCartContext';
-import ItemCounter from '../components/common/ItemCounter';
-import { StyledIconWrapper } from '../components/common/StyledIconWrapper';
-const CartPage = () => {
-  const { state, dispatch } = useContext(ShoppingCartContext);
+import StyledFlex from '../../components/common/StyledFlex';
+import ItemCounter from '../../components/common/ItemCounter';
+import { StyledIconWrapper } from '../../components/common/StyledIconWrapper';
+const CartPage = ({state, dispatch}) => {
+  // const { state, dispatch } = useContext(ShoppingCartContext);
   let history = useHistory();
 
   if(state.items.length === 0) {

@@ -1,6 +1,6 @@
 import React,{ useState } from 'react';
-import { devices } from '../../utils/devices';
-import ImageContainer from './Image';
+import { devices } from '../../../utils/devices';
+import ImageContainer from '../Image';
 import styled from 'styled-components';
 
 const Arrow = styled.i`
@@ -60,7 +60,7 @@ const Slider = ({images, isLoading}) => {
 		return <p>Empty list</p>
 	}
 	return (
-		<Wrapper>
+		<Wrapper data-testid="slider-banners">
 			<RightArrow onClick={() => setCounter(((counter - 1) + images.results.length) % images.results.length)}/>
 			{images.results && images.results.map((item,index) => (
 			counter === index && <ImageContainer key={index} maxWidth={'700px'} src={item.data.main_image.url} />
