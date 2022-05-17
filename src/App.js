@@ -37,7 +37,7 @@ function App() {
               <SearchPage />
             </Route>
             <Route exact path="/cart">
-              <CartPage />
+              <CartPage state={state} dispatch={dispatch} />
             </Route>
             <Route exact path="/checkout">
               <CheckoutPage />
